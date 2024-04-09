@@ -16,4 +16,5 @@ def connection():
             ser.open()
         yield ser
     finally:
-        ser.close()
+        if ser.is_open:
+            ser.close()
