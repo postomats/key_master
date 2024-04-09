@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, Depends
 
-from app.utilities.cells_control import *
+from utilities.cells_control import *
 from utilities import controller
 
 
