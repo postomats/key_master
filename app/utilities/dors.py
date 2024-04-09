@@ -18,6 +18,9 @@ def send_single_door_status(ser, cell_id):
     return _send_command(ser, DoorCommands.READ_SINGLE_DOOR_STATUS, [cell_id])
 
 def open_all_locks(ser, num_boards):
+    '''
+    num_boards: int - len of lockers
+    '''
     return _send_command(ser, DoorCommands.OPEN_ALL_LOCKS, [num_boards])
 
 def unlock(ser, cell_id):
