@@ -1,7 +1,7 @@
-from routes import doors
+from app.routes import cells
 
 from fastapi import FastAPI
 
 
 app = FastAPI()
-app.include_router(doors.router, prefix='/doors', tags=['Ключник'])
+app.include_router(cells.router, prefix='/doors', tags=['Ключник'])
