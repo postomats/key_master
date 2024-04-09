@@ -18,7 +18,7 @@ def is_open(id: int, session = Depends(controller.connection)):
     return res[-1] == 0
 
 
-@router.get('/open_all_cells')
+@router.get('/open_all')
 def open_all_cells(id:int = 2, session = Depends(controller.connection)):
     open_all_locks(session, id)
     return True
