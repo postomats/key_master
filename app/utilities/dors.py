@@ -37,7 +37,6 @@ def _send_command(ser, command, data_field):
             print('Board number:', i)
             board_number = i
             response = _send_command_frame(ser, start_character, board_number, command.value, data_field=[])
-            sleep(0.5)
             print('Response:', response)
         return True
     else:
@@ -63,4 +62,5 @@ def _send_command_frame(ser, start_character, board_number, instruction_word, da
         ser.open()
         
     ser.write(bytearray(frame))
+    sleep(0.5)
     return ser.read(10)  # Ожидаем 10 байт ответа
