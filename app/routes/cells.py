@@ -7,13 +7,17 @@ from utilities import controller
 router = APIRouter()
 
 @router.get('/{id}/open')
-def open_cell(id: int, session = Depends(controller.connection)): 
+def open_cell(id: int, session = Depends(controller.connection)):
+    if id < 0:
+        raise HTTPException(404, 'Cell not found')
     unlock(session, id)
     return True
 
 
 @router.get('/{id}/status')
 def is_open(id: int, session = Depends(controller.connection)):
+    if id < 0:
+        raise HTTPException(404, 'Cell not found')
     res = send_single_door_status(session, id)
     return res[-1] == 0
 
