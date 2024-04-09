@@ -33,8 +33,10 @@ def _send_command(ser, command, data_field):
     # Если передано num_boards, то отправляем команду на все платы
     if command == DoorCommands.OPEN_ALL_LOCKS:
         for i in data_field:
+            print('Board number:', i)
             board_number = i
-            _ = _send_command_frame(ser, start_character, board_number, command.value, data_field=[])
+            response = _send_command_frame(ser, start_character, board_number, command.value, data_field=[])
+            print('Response:', response)
         return True
     else:
         cell_id = data_field[0]  # Предполагаем, что первый элемент в data_field содержит cell_id
@@ -54,7 +56,7 @@ def _send_command_frame(ser, start_character, board_number, instruction_word, da
     
     # Отправка кадра данных
     frame = start_character + [frame_length, board_number, instruction_word] + data_field + [checksum]
-    
+    print('frame:', frame)
     if not ser.is_open:
         ser.open()
         
