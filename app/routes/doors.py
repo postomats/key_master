@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, Depends
 
-from ..utilities.dors import *
-from ..utilities import controller
+from utilities.dors import *
+from utilities import controller
 
 
 router = APIRouter()
