@@ -1,4 +1,4 @@
-from app.routes import cells
+from routes import cells
 
 from fastapi import FastAPI
 
