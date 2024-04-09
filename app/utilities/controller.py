@@ -11,6 +11,7 @@ def connection():
             timeout=0
         )
     try:
-        yield ser
+        ser.open()
     finally:
+        yield ser
         ser.close()
