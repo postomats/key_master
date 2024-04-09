@@ -32,7 +32,7 @@ def _send_command(ser, command, data_field):
     
     # Если передано num_boards, то отправляем команду на все платы
     if command == DoorCommands.OPEN_ALL_LOCKS:
-        for i in range(i):
+        for i in range(data_field):
             print('Board number:', i)
             board_number = i
             response = _send_command_frame(ser, start_character, board_number, command.value, data_field=[])
