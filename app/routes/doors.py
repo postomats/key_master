@@ -17,5 +17,5 @@ def open_all_dors(id: int, session = Depends(controller.connection)):
 
 
 @router.get('/door_all/open')
-def open_all_dors(session = Depends(controller.connection)):
-    return open_all_locks(session, [0, 1])
+def open_all_dors(id:int = 2, session = Depends(controller.connection)):
+    return open_all_locks(session, id)
