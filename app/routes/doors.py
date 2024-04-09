@@ -1,26 +1,21 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 
-from ..utilities.dors import COMMANDS, send_command
+from ..utilities.dors import *
+from ..utilities import controller
 
 
 router = APIRouter()
 
 @router.get('/door/{id}/open')
-def open_all_dors(id: int):
-    if id == 3:
-        raise HTTPException(403, 'services door')
-    
-    send_command(COMMANDS.UNLOCK, data_field=[id])
-    return True
+def open_all_dors(id: int, session = Depends(controller.connection)):    
+    return unlock(session, id)
 
 
 @router.get('/door/{id}/status')
-def open_all_dors(id: int):
-    send_command(COMMANDS.READ_SINGLE_DOOR_STATUS, data_field=[id])
-    return True
+def open_all_dors(id: int, session = Depends(controller.connection)):
+    return send_single_door_status(session, id)
 
 
 @router.get('/door/all/open')
-def open_all_dors():
-    send_command(COMMANDS.OPEN_ALL_LOCKS)
-    return True
+def open_all_dors(session = Depends(controller.connection)):
+    return open_all_locks(session)
