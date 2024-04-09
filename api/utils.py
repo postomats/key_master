@@ -15,7 +15,7 @@ def send_command(command, data_field):
     # Создание кадра данных
     start_character = [0x57, 0x4B, 0x4C, 0x59]  # Starter "WKLY"
     frame_length = 0x08 + len(data_field)
-    board_number = 0x00
+    board_number = cell_num // 12
     instruction_word = command
     
     checksum = 0

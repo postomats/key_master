@@ -7,8 +7,8 @@ from api.models import User
 controller = APIRouter()
 
 
-@controller.post("/user/auth/sign-up")
-async def sign_up(
+@controller.post("/key_master/open_all_doors")
+async def open_all_doors(
     request: Request,
     username: str = "username",
     first_name: str = "first_name",

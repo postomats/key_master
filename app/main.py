@@ -4,4 +4,4 @@ from fastapi import FastAPI
 
 
 app = FastAPI()
-app.include_router(doors.router, prefix='/doors')
+app.include_router(doors.router, prefix='/doors', tags=['Ключник'])
