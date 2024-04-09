@@ -17,7 +17,7 @@ class DoorCommands(int, Enum):
 def send_single_door_status(ser, cell_id):
     return _send_command(ser, DoorCommands.READ_SINGLE_DOOR_STATUS, [cell_id])
 
-def open_all_locks(ser, num_boards: list[int]):
+def open_all_locks(ser, num_boards: int):
     '''
     num_boards: int - len of lockers
     '''
@@ -32,7 +32,7 @@ def _send_command(ser, command, data_field):
     
     # Если передано num_boards, то отправляем команду на все платы
     if command == DoorCommands.OPEN_ALL_LOCKS:
-        for i in data_field:
+        for i in range(i):
             print('Board number:', i)
             board_number = i
             response = _send_command_frame(ser, start_character, board_number, command.value, data_field=[])
