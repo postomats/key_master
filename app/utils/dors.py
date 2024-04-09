@@ -21,7 +21,7 @@ def send_command(command, board_number=0x00, data_field=[]):
 
     # Создание кадра данных
     start_character = [0x57, 0x4B, 0x4C, 0x59]  # Starter "WKLY"
-    frame_length = 0x09
+    frame_length = 0x08 + len(data_field)
     #board_number = 0x00
     instruction_word = command
     
