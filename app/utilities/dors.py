@@ -41,7 +41,7 @@ def _send_command(ser, command, data_field):
         return True
     else:
         cell_id = data_field[0]  # Предполагаем, что первый элемент в data_field содержит cell_id
-        board_number = cell_id // 12
+        board_number = (cell_id-1) // 12
         cell_id = (cell_id-1) % 12 + 1
         return _send_command_frame(ser, start_character, board_number, command.value, [cell_id])
 
