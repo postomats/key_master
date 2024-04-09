@@ -12,8 +12,6 @@ ser = serial.Serial(
 
 def connection():
     try:
-        if not ser.is_open:
-            ser.open()
         yield ser
     finally:
         if ser.is_open:

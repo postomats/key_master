@@ -52,5 +52,9 @@ def _send_command_frame(ser, start_character, board_number, instruction_word, da
     
     # Отправка кадра данных
     frame = start_character + [frame_length, board_number, instruction_word] + data_field + [checksum]
+    
+    if not ser.is_open:
+        ser.open()
+        
     ser.write(bytearray(frame))
     return ser.read(10)  # Ожидаем 10 байт ответа
