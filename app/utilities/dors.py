@@ -1,6 +1,7 @@
 from enum import Enum
 from serial import Serial
 import serial
+from time import sleep
 
 
 class DoorCommands(int, Enum):
@@ -36,6 +37,7 @@ def _send_command(ser, command, data_field):
             print('Board number:', i)
             board_number = i
             response = _send_command_frame(ser, start_character, board_number, command.value, data_field=[])
+            sleep(2)
             print('Response:', response)
         return True
     else:
