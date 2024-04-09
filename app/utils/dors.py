@@ -4,7 +4,7 @@ import serial
 import time
 
 
-class COMMANDS(Enum):
+class COMMANDS(int, Enum):
     all_dors = 0x86
 
 
