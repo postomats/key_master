@@ -10,6 +10,7 @@ def connection():
             bytesize=serial.EIGHTBITS,
             timeout=0
         )
-    ser.open()
-    yield ser
-    ser.close()
+    try:
+        yield ser
+    finally:
+        ser.close()
