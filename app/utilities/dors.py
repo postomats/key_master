@@ -5,7 +5,14 @@ import time
 
 
 class COMMANDS(int, Enum):
-    all_dors = 0x86
+    UNLOCK = 0x82
+    READ_SINGLE_DOOR_STATUS = 0x83
+    READ_ALL_DOOR_STATES = 0x84
+    OPEN_ALL_LOCKS = 0x86
+    OPEN_MULTIPLE_LOCKS = 0x87
+    LOCK_CHANNEL_CONTINUOUS = 0x88
+    LOCK_CHANNEL_OUTPUT_OFF = 0x89
+    
 
 
 # Функция для отправки команды на RS485
@@ -36,6 +43,7 @@ def send_command(command, board_number=0x00, data_field=[]):
     response = ser.read(10)  # Ожидаем 7 байт ответа
     print("Response:", response)
     ser.close()
+    return response
 
 if __name__ == '__main__':
     # Открытие всех замков каналов
