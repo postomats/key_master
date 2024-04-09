@@ -7,8 +7,9 @@ from utilities import controller
 router = APIRouter()
 
 @router.get('/door/{id}/open')
-def open_all_dors(id: int, session = Depends(controller.connection)):    
-    return unlock(session, id)
+def open_all_dors(id: int, session = Depends(controller.connection)): 
+    unlock(session, id)
+    return True
 
 
 @router.get('/door/{id}/status')
