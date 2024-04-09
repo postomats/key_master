@@ -14,8 +14,7 @@ def open_all_dors(id: int, session = Depends(controller.connection)):
 @router.get('/door/{id}/status')
 def open_all_dors(id: int, session = Depends(controller.connection)):
     res = send_single_door_status(session, id)
-    print(res)
-    return True
+    return res[-1] == 0
 
 
 @router.get('/door_all/open')
