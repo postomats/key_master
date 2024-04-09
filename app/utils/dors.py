@@ -9,7 +9,7 @@ class COMMANDS(Enum):
 
 
 # Функция для отправки команды на RS485
-def send_command(command, board_number=0x00, data_field=0x00):
+def send_command(command, board_number=0x00, data_field=[]):
     ser = Serial(
         port='/dev/ttyUSB0',
         baudrate=9600,
