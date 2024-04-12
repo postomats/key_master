@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  postomat:
+    build:
+      context: .
+    ports:
+      - 8000:8000
+    networks:
+      - backend
+    volumes:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+
+
+networks:
+  backend:
+    external: true
